@@ -1,0 +1,8 @@
+/node_modules
+/.next
+/.storybook
+/certificates
+
+.env.local
+
+yarn-error.log
