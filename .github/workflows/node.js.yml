@@ -1,0 +1,39 @@
+name: Build
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
+    steps:
+    - name: Get files
+      uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install packages
+      run: yarn install --prefer-offline
+    - name: Build project
+      run: yarn build
+      env:
+        NEXT_PUBLIC_BASE_PATH: ${{ secrets.BASE_PATH }}
+        NEXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.GMAPS_API_KEY }}
+    - name: Export static files
+      run: yarn export
+    - name: Add .nojekyll file
+      run: touch ./out/.nojekyll
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.9
+      with:
+        branch: gh-pages
+        folder: out
