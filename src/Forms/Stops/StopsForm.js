@@ -15,7 +15,7 @@ const Stop = ({ data, onRightClick }) => {
   return (
     <>
       <div
-        className="p-4 nm-flat-white-xs hover:nm-convex-white-xs rounded-xl cursor-pointer my-2 min-w-0 truncate w-sm"
+        className="p-4 nm-flat-white-xs hover:nm-convex-white-xs rounded-xl cursor-pointer my-2 min-w-0 truncate w-sm capitalize"
         onMouseEnter={() => setIsHover(true)}
         onMouseLeave={() => setIsHover(false)}
         onContextMenu={onRightClick}
@@ -35,20 +35,24 @@ const Stop = ({ data, onRightClick }) => {
 
 function StopsForm({}) {
   const [stops, setStops] = useState([]);
-  const { handleSubmit, control, watch } = useForm({
+  const { handleSubmit, control, watch, reset } = useForm({
     mode: "onSubmit",
   });
 
   const onSubmit = (values) => {
     values.id = nanoid(20);
-    if (values.address) setStops((prevStops) => [...prevStops, values]);
+    if (values.address) setStops((prevStops) => [...prevStops, { ...values }]);
+    reset();
   };
 
   const gMap = useGoogleMap();
   const address = watch("address");
 
   useEffect(() => {
-    if (stops?.length > 0) center(gMap, [...stops, { address }]);
+    if (stops?.length > 0) {
+      if (address) center(gMap, [...stops, { address }]);
+      else center(gMap, [...stops]);
+    }
   }, [gMap, stops, address]);
 
   return (

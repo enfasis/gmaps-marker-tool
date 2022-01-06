@@ -8,7 +8,10 @@ const Marker = ({ secondary, location, isHover, onRightClick, info }) => {
   let markerClass = "relative h-5 w-5 rounded-full ";
   let pingClass = "absolute h-6 w-6 rounded-full animate-ping delay-75 ";
 
-  if (secondary) {
+  if (isHover) {
+    pingClass += "bg-pink-200 ";
+    markerClass += "bg-pink-500 ";
+  } else if (secondary) {
     pingClass += "bg-green-200 ";
     markerClass += "bg-green-500 ";
   } else {
