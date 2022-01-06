@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: Roboto;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmSU5fChc4EsA.woff2)
+      format("woff2");
+  }
+  @font-face {
+    font-family: Roboto;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/roboto/v27/KFOmCnqEu92Fr1Mu7GxKOzY.woff2)
+      format("woff2");
+  }
+  @font-face {
+    font-family: Roboto;
+    font-weight: 500;
+    src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmEU9fBBc4.woff2)
+      format("woff2");
+  }
+  @font-face {
+    font-family: Roboto;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/roboto/v27/KFOlCnqEu92Fr1MmWUlfBBc4.woff2)
+      format("woff2");
+  }
+  @font-face {
+    font-family: "Nunito Sans";
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/nunitosans/v8/pe03MImSLYBIv1o4X1M8cc8WAc5tU1E.woff2)
+      format("woff2");
+  }
+  @font-face {
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/nunitosans/v8/pe0qMImSLYBIv1o4X1M8cce9I9s.woff2)
+      format("woff2");
+  }
+  @font-face {
+    font-family: "Nunito Sans";
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/nunitosans/v8/pe03MImSLYBIv1o4X1M8cc9iB85tU1E.woff2)
+      format("woff2");
+  }
+  @font-face {
+    font-family: "Nunito Sans";
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/nunitosans/v8/pe03MImSLYBIv1o4X1M8cc8GBs5tU1E.woff2)
+      format("woff2");
+  }
+}
+
+@layer utilities {
+  .bg-plus {
+    background-color: #f9fafb;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .bg-anime {
+    background-image: url("/images/bg.gif");
+    @apply bg-bottom;
+    @apply bg-no-repeat;
+    @apply bg-auto;
+  }
+
+  .inset-fixed-center {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  input::placeholder {
+    text-transform: none !important;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text-gradient {
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  input.no-autofill-bkg:-webkit-autofill {
+    -webkit-background-clip: text;
+  }
+
+  .placeholder-light::placeholder {
+    @apply font-light;
+  }
+
+  @variants responsive, hover, active, focus {
+    /* WHITE */
+
+    .nm-flat-white-xs {
+      background: theme("colors.gray.100");
+      box-shadow: 5px 5px 10px theme("colors.gray.200"),
+        -5px -5px 10px theme("colors.white");
+    }
+
+    .nm-convex-white-xs {
+      background: linear-gradient(
+        145deg,
+        theme("colors.white"),
+        theme("colors.gray.200")
+      );
+      box-shadow: 5px 5px 10px theme("colors.gray.200"),
+        -5px -5px 10px theme("colors.white");
+    }
+  }
+}
