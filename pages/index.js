@@ -17,8 +17,8 @@ function Home() {
         <Map onLoadMap={onLoad} />
       </div>
       <MapContext.Provider value={map}>
-        <div className="relative flex flex-grow flex-col md:flex-row self-start md:p-6">
-          <div>
+        <div className="flex flex-grow flex-col md:flex-row self-start md:p-6">
+          <div className="relative max-w-full md:max-w-sm">
             <StopsForm />
           </div>
           <div id="mapView" className="m-2 h-96 md:h-auto md:m-6 flex-grow" />
