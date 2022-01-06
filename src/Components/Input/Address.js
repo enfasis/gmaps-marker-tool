@@ -38,7 +38,7 @@ const Address = ({
       geocode({ address: debouncedAddress + " Lima, Peru" })
         .then((r) => {
           if (r) {
-            onChange({ user: inputRef?.current?.value, ...r });
+            onChange({ user: debouncedAddress, ...r });
             setError("");
           } else setError("No encontrado");
         })
